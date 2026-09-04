@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recomind — AI Recommendation Engine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">✦</span><span>recomind</span></div>
+      <div class="workspace-switcher"><span class="avatar small">JD</span><span>Jordan's space</span><span class="chevron">⌄</span></div>
+      <nav class="nav">
+        <p class="nav-label">Workspace</p>
+        <button class="nav-item active" data-view="overview"><span>⌂</span> Overview</button>
+        <button class="nav-item" data-view="discover"><span>◉</span> Discover</button>
+        <button class="nav-item" data-view="profile"><span>◎</span> User profile</button>
+        <button class="nav-item" data-view="history"><span>↺</span> Recommendation history</button>
+        <p class="nav-label">Engine</p>
+        <button class="nav-item" data-view="insights"><span>⌁</span> Model insights</button>
+        <button class="nav-item" data-view="settings"><span>⚙</span> Settings</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="upgrade-card">
+          <span class="sparkle">✦</span>
+          <strong>Unlock Hybrid AI</strong>
+          <p>Blend behavior and content for sharper predictions.</p>
+          <button class="upgrade-btn" data-mode="hybrid">Try hybrid mode <span>→</span></button>
+        </div>
+        <div class="user-row"><span class="avatar">JD</span><div><strong>Jordan Davis</strong><small>Explorer plan</small></div><span class="more">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">✦</span> recomind</div>
+        <div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="breadcrumb-title">Overview</strong></div>
+        <div class="top-actions"><button class="icon-btn" title="Notifications">♧<i></i></button><div class="top-divider"></div><button class="help-btn">? <span>Help center</span></button></div>
+      </header>
+
+      <section id="overview-view" class="view active-view">
+        <div class="welcome-row"><div><p class="eyebrow">THURSDAY, SEPTEMBER 4, 2026</p><h1>Good morning, Jordan <span>✦</span></h1><p class="subtitle">Your taste profile is evolving. Here's what the engine found for you.</p></div><button class="primary-btn" id="refresh-btn">↻ Refresh recommendations</button></div>
+        <div class="stat-grid">
+          <article class="stat-card"><div class="stat-icon purple">♧</div><div><p>Profile confidence</p><strong>86.4%</strong><span class="trend up">↗ 4.8% <em>vs last week</em></span></div></article>
+          <article class="stat-card"><div class="stat-icon green">✦</div><div><p>Items discovered</p><strong id="discovered-count">128</strong><span class="trend up">↗ 12 <em>this week</em></span></div></article>
+          <article class="stat-card"><div class="stat-icon orange">♡</div><div><p>Saved for later</p><strong id="saved-count">24</strong><span class="trend neutral">— 2 <em>since Monday</em></span></div></article>
+          <article class="stat-card"><div class="stat-icon blue">◌</div><div><p>Recommendation quality</p><strong>4.7<span class="out-of">/5</span></strong><span class="trend up">↗ 0.3 <em>your rating</em></span></div></article>
+        </div>
+        <div class="section-heading"><div><h2>Picked for you</h2><p>Personalized with <strong id="mode-label">hybrid recommendations</strong></p></div><button class="text-btn" data-view="discover">View all <span>→</span></button></div>
+        <div class="mode-tabs"><button class="mode-tab" data-mode="hybrid">✦ Hybrid <small>Recommended</small></button><button class="mode-tab active" data-mode="content">◈ Content-based</button><button class="mode-tab" data-mode="collaborative">⌘ People like you</button></div>
+        <div class="recommendation-grid" id="recommendation-grid"></div>
+        <div class="section-heading lower"><div><h2>Your taste profile</h2><p>Based on your recent activity and ratings</p></div><button class="text-btn" data-view="profile">View profile <span>→</span></button></div>
+        <div class="profile-preview"><div class="taste-summary"><div class="profile-avatar">JD<span class="online-dot"></span></div><div><h3>Jordan Davis</h3><p>12 signals collected <span>•</span> Last updated today</p><div class="tags"><span>Science fiction</span><span>Indie drama</span><span>Dark comedy</span><span>+4 more</span></div></div></div><div class="taste-score"><div class="score-ring"><span>86</span><small>/100</small></div><div><strong>Strong profile</strong><p>Keep rating to improve accuracy</p></div></div></div>
+      </section>
+
+      <section id="discover-view" class="view"><div class="page-heading"><div><p class="eyebrow">THE CATALOG</p><h1>Discover something new</h1><p class="subtitle">Explore your personalized catalog and tell us what you think.</p></div><div class="search-box"><span>⌕</span><input id="search-input" placeholder="Search movies, genres, directors..."></div></div><div class="discover-controls"><div class="filter-pills"><button class="filter-pill active" data-filter="all">All picks</button><button class="filter-pill" data-filter="movie">Movies</button><button class="filter-pill" data-filter="series">Series</button></div><span class="result-count" id="result-count"></span></div><div class="recommendation-grid discover-grid" id="discover-grid"></div></section>
+
+      <section id="profile-view" class="view"><div class="page-heading"><div><p class="eyebrow">USER PROFILE ANALYSIS</p><h1>Jordan's taste profile</h1><p class="subtitle">The engine learns from every interaction to make your next pick better.</p></div><button class="secondary-btn" id="clear-profile">Reset signals</button></div><div class="profile-layout"><div class="profile-main"><div class="analysis-card profile-hero"><div class="big-profile-avatar">JD</div><div><h2>Jordan Davis</h2><p>Explorer since January 2025</p><div class="profile-stats"><span><b id="profile-likes">42</b> likes</span><span><b>18</b> ratings</span><span><b id="profile-saves">24</b> saves</span></div></div><div class="confidence-large"><span>86%</span><small>confidence</small></div></div><div class="analysis-card"><div class="card-title"><div><h3>Interest signals</h3><p>What shapes your recommendations</p></div><span class="muted">Updated just now</span></div><div class="interest-list"><div class="interest"><span class="interest-icon">⌁</span><div><strong>Science fiction</strong><div class="bar"><i style="width:92%"></i></div></div><b>92%</b></div><div class="interest"><span class="interest-icon">◐</span><div><strong>Indie drama</strong><div class="bar"><i style="width:78%"></i></div></div><b>78%</b></div><div class="interest"><span class="interest-icon">☼</span><div><strong>Dark comedy</strong><div class="bar"><i style="width:64%"></i></div></div><b>64%</b></div><div class="interest"><span class="interest-icon">◇</span><div><strong>Documentaries</strong><div class="bar"><i style="width:48%"></i></div></div><b>48%</b></div></div></div></div><div class="profile-side"><div class="analysis-card"><div class="card-title"><h3>How you discover</h3></div><div class="donut-wrap"><div class="donut"><span>100<small>%</small></span></div><ul class="legend"><li><i class="purple-dot"></i>Recommendations <b>62%</b></li><li><i class="orange-dot"></i>Search <b>23%</b></li><li><i class="blue-dot"></i>Friends <b>15%</b></li></ul></div></div><div class="analysis-card"><div class="card-title"><h3>Recent signals</h3><button class="text-btn" data-view="history">See all</button></div><div class="signal-list"><span>♥ Liked <b>The Wild Robot</b><time>2h ago</time></span><span>★ Rated <b>Severance</b> 5/5<time>Yesterday</time></span><span>▣ Saved <b>Past Lives</b><time>2d ago</time></span></div></div></div></div></section>
+
+      <section id="history-view" class="view"><div class="page-heading"><div><p class="eyebrow">YOUR JOURNEY</p><h1>Recommendation history</h1><p class="subtitle">A record of the suggestions that shaped your profile.</p></div><button class="secondary-btn" id="export-history">↓ Export data</button></div><div class="history-card analysis-card"><div class="history-header"><div><h3>Recent recommendations</h3><p id="history-summary">Your latest 10 recommendations</p></div><select id="history-filter"><option value="all">All activity</option><option value="liked">Liked</option><option value="saved">Saved</option></select></div><div id="history-list"></div></div></section>
+
+      <section id="insights-view" class="view"><div class="page-heading"><div><p class="eyebrow">MODEL PERFORMANCE</p><h1>Model insights</h1><p class="subtitle">Understand how Recomind turns signals into personal picks.</p></div></div><div class="insights-grid"><div class="analysis-card model-card"><div class="model-icon">✦</div><h3>Hybrid model</h3><p>Combines content similarity with patterns from 18,420 users who share your taste.</p><div class="model-meter"><span>Current blend</span><b>60% content <em>+</em> 40% collaborative</b><div class="bar"><i style="width:60%"></i></div></div><button class="primary-btn" data-mode="hybrid">Activate hybrid mode</button></div><div class="analysis-card metric-card"><h3>Recommendation quality</h3><div class="big-metric">4.7 <span>/ 5.0</span></div><p>Average rating from your last 20 recommendations</p><div class="mini-chart"><i style="height:42%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:63%"></i><i style="height:82%"></i><i style="height:91%"></i></div><small>Last 7 days <b>↗ 8.2%</b></small></div><div class="analysis-card"><h3>Engine capabilities</h3><div class="capability"><span>◈</span><div><b>Content-based filtering</b><small>Matches genres, cast, themes and tone</small></div><strong class="status-ready">Ready</strong></div><div class="capability"><span>⌘</span><div><b>Collaborative filtering</b><small>Finds patterns across similar viewers</small></div><strong class="status-ready">Ready</strong></div><div class="capability"><span>✦</span><div><b>Hybrid recommendations</b><small>Balances both models for precision</small></div><strong class="status-ready">Ready</strong></div></div></div></section>
+
+      <section id="settings-view" class="view"><div class="page-heading"><div><p class="eyebrow">PREFERENCES</p><h1>Settings</h1><p class="subtitle">Tune how the recommendation engine works for you.</p></div></div><div class="settings-card analysis-card"><div class="setting-row"><div><h3>Preferred recommendation model</h3><p>Choose the signal mix used for your personalized picks.</p></div><select id="settings-mode"><option value="content">Content-based</option><option value="collaborative">People like you</option><option value="hybrid">Hybrid (recommended)</option></select></div><div class="setting-row"><div><h3>Include mature themes</h3><p>Allow recommendations with darker or more challenging content.</p></div><button class="toggle on" data-toggle><i></i></button></div><div class="setting-row"><div><h3>Weekly taste report</h3><p>Receive a summary of how your profile is changing.</p></div><button class="toggle on" data-toggle><i></i></button></div><div class="setting-row"><div><h3>Personalized suggestions</h3><p>Use your interaction history to improve relevance.</p></div><button class="toggle on" data-toggle><i></i></button></div></div></section>
+    </main>
+  </div>
+  <div class="toast" id="toast"><span>✓</span><b>Recommendation saved</b></div>
+  <script src="app.js"></script>
+</body>
+</html>
